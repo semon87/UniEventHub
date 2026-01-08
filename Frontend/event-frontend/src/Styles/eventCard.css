@@ -1,0 +1,57 @@
+.event-card {
+  background: linear-gradient(135deg, #ffffff, #f3f6ff);
+  border-radius: 16px;
+  padding: 5px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+.event-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #3f3d56;
+}
+
+.club-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6c63ff;
+}
+
+.event-desc {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.event-time {
+  font-size: 0.75rem;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.register-btn {
+  margin-top: auto;
+  background: linear-gradient(135deg, #58559b, #5a54d6);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+
+}
+
+.register-btn:hover {
+  background: linear-gradient(135deg, #5a54d6, #4a44c4);
+}
