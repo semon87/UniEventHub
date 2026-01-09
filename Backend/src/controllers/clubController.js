@@ -30,7 +30,7 @@ export const updateProfile = async (req, res) => {
     
     // Handle file upload
     if (req.file) {
-        club.profilePhoto = `uploads/${req.file.filename}`;
+        club.profilePhoto = req.file.path;
     }
 
     await club.save();

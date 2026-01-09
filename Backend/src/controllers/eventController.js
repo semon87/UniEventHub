@@ -9,7 +9,7 @@ export async function createEvent(req, res) {
     let { title, description, eventType, startDateTime, endDateTime, venue, entryFee, participantLimit, coverImage } = req.body;
 
     if (req.file) {
-      coverImage = `uploads/${req.file.filename}`;
+      coverImage = req.file.path;
     }
 
     // Validate dates
@@ -200,7 +200,7 @@ export async function updateEvent(req, res) {
       req.body;
 
     if (req.file) {
-      coverImage = `uploads/${req.file.filename}`;
+      coverImage = req.file.path;
     }
 
     // Validate dates if both are provided

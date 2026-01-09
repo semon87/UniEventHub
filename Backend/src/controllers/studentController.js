@@ -21,8 +21,8 @@ export const updateProfile = async (req, res) => {
     // Handle file upload
     if (req.file) {
       // Delete old photo if it exists (optional, keeping it simple for now)
-      // Save relative path
-      student.profilePhoto = `uploads/${req.file.filename}`;
+      // Save full Cloudinary URL
+      student.profilePhoto = req.file.path;
     }
 
     await student.save();
