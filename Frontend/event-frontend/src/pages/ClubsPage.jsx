@@ -12,7 +12,9 @@ export default function ClubsPage() {
   useEffect(() => {
     const fetchClubs = async () => {
          try {
-             const res = await API.get("/clubs");
+             console.log("Fetching clubs...");
+             const res = await API.get(`/clubs?_t=${new Date().getTime()}`);
+             console.log("Clubs response:", res.data);
              if(res.data.success) {
                setClubs(res.data.data);
              }
@@ -40,7 +42,7 @@ export default function ClubsPage() {
         <h1 style={{ fontSize: "2.5rem", fontWeight: "800", marginBottom: "2rem" }}>Student Clubs</h1>
         
         {loading ? (
-           <div style={{ textAlign: "center", color: "#a1a1aa" }}>Loading clubs...</div>
+           <div style={{ textAlign: "center", color: "#a1a1aa" }}>Loading clubs list...</div>
         ) : clubs.length === 0 ? (
            <div style={{ textAlign: "center", color: "#a1a1aa" }}>No clubs found.</div>
         ) : (
@@ -49,7 +51,7 @@ export default function ClubsPage() {
              <div key={club._id} style={{ background: "#18181b", padding: "2rem", borderRadius: "12px", border: "1px solid #27272a", textAlign: "center" }}>
                 <div style={{ width: "80px", height: "80px", background: "#27272a", borderRadius: "50%", margin: "0 auto 1.5rem", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "2rem", overflow: "hidden" }}>
                    {club.profilePhoto ? (
-                     <img src={getPhotoUrl(club.profilePhoto)} style={{width:"100%", height:"100%", objectFit:"cover"}} alt={club.name} />
+                     <img src={getPhotoUrl(club.profilePhoto)} style={{width:"100%", height:"100%", objectFit:"cover"}} alt={club.name} onError={(e) => console.error("Img validation error", club.name, club.profilePhoto)} />
                    ) : (
                      "🏛️"
                    )}
