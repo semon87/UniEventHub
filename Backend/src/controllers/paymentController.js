@@ -7,6 +7,9 @@ const store_id = "emni684e61caa0afe";
 const store_passwd ="emni684e61caa0afe@ssl";
 const is_live = false; // Set to true for live
 
+const SERVER_URL = "https://unieventhub-production.up.railway.app";
+const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
+
 // @desc    Initialize Payment
 // @route   POST /api/payment/init
 // @access  Private
@@ -32,10 +35,10 @@ export const initPayment = async (req, res) => {
       total_amount: event.entryFee,
       currency: "BDT",
       tran_id: tran_id,
-      success_url: `http://localhost:5000/api/payment/success/${tran_id}`,
-      fail_url: `http://localhost:5000/api/payment/fail/${tran_id}`,
-      cancel_url: `http://localhost:5000/api/payment/cancel/${tran_id}`,
-      ipn_url: `http://localhost:5000/api/payment/ipn`,
+      success_url: `${SERVER_URL}/api/payment/success/${tran_id}`,
+      fail_url: `${SERVER_URL}/api/payment/fail/${tran_id}`,
+      cancel_url: `${SERVER_URL}/api/payment/cancel/${tran_id}`,
+      ipn_url: `${SERVER_URL}/api/payment/ipn`,
       shipping_method: "Courier",
       product_name: event.title,
       product_category: "Event Ticket",
@@ -88,11 +91,11 @@ export const paymentSuccess = async (req, res) => {
     const { value_a: eventId, value_b: userId } = req.body;
 
     if (!eventId || !userId) {
-        return res.redirect(`http://localhost:5173/payment/fail?message=Invalid Metadata`);
+        return res.redirect(`${CLIENT_URL}/payment/fail?message=Invalid Metadata`);
     }
 
     const event = await Event.findById(eventId);
-    if (!event) return res.redirect(`http://localhost:5173/payment/fail?message=Event Not Found`);
+    if (!event) return res.redirect(`${CLIENT_URL}/payment/fail?message=Event Not Found`);
 
     // Add student to event if not already
     if (!event.goingStudents.includes(userId)) {
@@ -100,22 +103,22 @@ export const paymentSuccess = async (req, res) => {
         await event.save();
     }
 
-    res.redirect(`http://localhost:5173/payment/success?tran_id=${tran_id}`);
+    res.redirect(`${CLIENT_URL}/payment/success?tran_id=${tran_id}`);
 
   } catch (error) {
     console.error(error);
-    res.redirect(`http://localhost:5173/payment/fail?message=Server Error`);
+    res.redirect(`${CLIENT_URL}/payment/fail?message=Server Error`);
   }
 };
 
 // @desc    Payment Fail Callback
 // @route   POST /api/payment/fail/:tran_id
 export const paymentFail = async (req, res) => {
-  res.redirect(`http://localhost:5173/payment/fail?message=Payment Failed`);
+  res.redirect(`${CLIENT_URL}/payment/fail?message=Payment Failed`);
 };
 
 // @desc    Payment Cancel Callback
 // @route   POST /api/payment/cancel/:tran_id
 export const paymentCancel = async (req, res) => {
-  res.redirect(`http://localhost:5173/payment/cancel`);
+  res.redirect(`${CLIENT_URL}/payment/cancel`);
 };
