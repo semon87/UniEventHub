@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import API from "../api/axios";
+import API, { BASE_URL } from "../api/axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Check, X, LogOut } from "lucide-react";
 
@@ -137,7 +137,7 @@ export default function ModeratorDashboard() {
               {events.map(event => (
                 <div key={event._id} className="card" style={{ background: "#18181b", padding: "1.5rem", borderRadius: "12px", border: "1px solid #27272a" }}>
                   <img 
-                    src={event.coverImage.startsWith("http") ? event.coverImage : `http://localhost:5000/${event.coverImage}`} 
+                    src={event.coverImage.startsWith("http") ? event.coverImage : `${BASE_URL}/${event.coverImage}`} 
                     alt={event.title} 
                     style={{ width: "100%", height: "180px", objectFit: "cover", borderRadius: "8px", marginBottom: "1rem" }}
                   />

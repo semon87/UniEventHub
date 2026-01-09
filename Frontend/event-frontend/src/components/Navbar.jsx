@@ -12,6 +12,7 @@ import {
   Settings 
 } from "lucide-react";
 import { useState } from "react";
+import { BASE_URL } from "../api/axios";
 import EditProfileModal from "./EditProfileModal";
 
 export default function Navbar() {
@@ -58,7 +59,7 @@ export default function Navbar() {
   const getPhotoUrl = (path) => {
     if (!path) return null;
     if (path.startsWith("http")) return path;
-    return `http://localhost:5000/${path}`;
+    return `${BASE_URL}/${path}`;
   };
 
   return (

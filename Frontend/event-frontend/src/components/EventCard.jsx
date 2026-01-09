@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../api/axios";
 
 export default function EventCard({ event }) {
   const navigate = useNavigate();
@@ -6,7 +7,7 @@ export default function EventCard({ event }) {
   const getPhotoUrl = (path) => {
     if (!path) return "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000";
     if (path.startsWith("http")) return path;
-    return `http://localhost:5000/${path}`;
+    return `${BASE_URL}/${path}`;
   };
 
   const date = new Date(event.startDateTime);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import API from "../api/axios";
+import API, { BASE_URL } from "../api/axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -68,7 +68,7 @@ export default function EventDetailsPage() {
   const getPhotoUrl = (path) => {
     if (!path) return "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000";
     if (path.startsWith("http")) return path;
-    return `http://localhost:5000/${path}`;
+    return `${BASE_URL}/${path}`;
   };
 
   if (loading) return <div style={{ minHeight: "100vh", background: "#09090b", color: "white", display: "flex", justifyContent: "center", alignItems: "center" }}>Loading...</div>;

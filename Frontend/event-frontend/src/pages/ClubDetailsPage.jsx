@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"; // Add useNavigate import
-import API from "../api/axios";
+import API, { BASE_URL } from "../api/axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import EventCard from "../components/EventCard";
@@ -41,7 +41,7 @@ export default function ClubDetailsPage() {
   const getPhotoUrl = (path) => {
     if (!path) return "https://via.placeholder.com/150";
     if (path.startsWith("http")) return path;
-    return `http://localhost:5000/${path}`;
+    return `${BASE_URL}/${path}`;
   };
 
   return (

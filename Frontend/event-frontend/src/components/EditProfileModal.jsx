@@ -1,5 +1,5 @@
 import { useState } from "react";
-import API from "../api/axios";
+import API, { BASE_URL } from "../api/axios";
 import { X, Camera } from "lucide-react";
 
 export default function EditProfileModal({ user, onClose, onUpdate }) {
@@ -57,7 +57,7 @@ export default function EditProfileModal({ user, onClose, onUpdate }) {
   const getPhotoUrl = (path) => {
      if (!path) return null;
      if (path.startsWith("http")) return path;
-     return `http://localhost:5000/${path}`;
+     return `${BASE_URL}/${path}`;
   };
 
   return (

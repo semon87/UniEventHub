@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../api/axios";
+import axios, { BASE_URL } from "../api/axios";
 import Footer from "../components/Footer";
 import { Eye, EyeOff } from "lucide-react";
 
@@ -80,7 +80,7 @@ export default function LandingPage() {
   const getPhotoUrl = (path) => {
     if (!path) return null;
     if (path.startsWith("http")) return path;
-    return `http://localhost:5000/${path.replace(/\\/g, "/")}`;
+    return `${BASE_URL}/${path.replace(/\\/g, "/")}`;
   };
 
   const nextSlide = () => {

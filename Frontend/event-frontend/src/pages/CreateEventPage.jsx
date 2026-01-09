@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import API from "../api/axios";
+import API, { BASE_URL } from "../api/axios";
 
 export default function CreateEventPage() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ export default function CreateEventPage() {
   });
   
   const [coverImage, setCoverImage] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(editEvent?.coverImage ? (editEvent.coverImage.startsWith("http") ? editEvent.coverImage : `http://localhost:5000/${editEvent.coverImage}`) : null);
+  const [previewUrl, setPreviewUrl] = useState(editEvent?.coverImage ? (editEvent.coverImage.startsWith("http") ? editEvent.coverImage : `${BASE_URL}/${editEvent.coverImage}`) : null);
 
   const [dragActive, setDragActive] = useState(false);
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../api/axios";
+import API, { BASE_URL } from "../api/axios";
 import Footer from "../components/Footer";
 
 export default function ClubDashboard() {
@@ -49,7 +49,7 @@ export default function ClubDashboard() {
   const getPhotoUrl = (path) => {
     if (!path) return null;
     if (path.startsWith("http")) return path;
-    return `http://localhost:5000/${path}`;
+    return `${BASE_URL}/${path}`;
   };
 
   // ... (existing handlers) ...

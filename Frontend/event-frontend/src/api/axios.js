@@ -1,7 +1,9 @@
 import axios from "axios";
 
+export const BASE_URL = "https://unieventhub-production.up.railway.app";
+
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: `${BASE_URL}/api`,
 });
 
 API.interceptors.request.use((req) => {
