@@ -16,24 +16,19 @@ import { v4 as uuidv4 } from "uuid";
 import { eventValidation, validate } from "../middlewares/validation.js";
 
 // Configure Multer
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, uuidv4() + path.extname(file.originalname));
-  },
-});
+import { storage } from "../config/cloudinary.js";
 
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith("image/")) {
-    cb(null, true);
-  } else {
-    cb(new Error("Not an image!"), false);
-  }
-};
+// Configure Multer
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "uploads/");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, uuidv4() + path.extname(file.originalname));
+//   },
+// });
 
-const upload = multer({ storage: storage, fileFilter: fileFilter });
+const upload = multer({ storage: storage });
 
 const router = Router();
 

@@ -13,24 +13,9 @@ import { protect, authorize } from "../middlewares/auth.js";
 const router = Router();
 
 // Configure Multer
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, uuidv4() + path.extname(file.originalname));
-  },
-});
+import { storage } from "../config/cloudinary.js";
 
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith("image/")) {
-    cb(null, true);
-  } else {
-    cb(new Error("Not an image!"), false);
-  }
-};
-
-const upload = multer({ storage: storage, fileFilter: fileFilter });
+const upload = multer({ storage: storage });
 
 
 router.get("/", getAllClubs);
