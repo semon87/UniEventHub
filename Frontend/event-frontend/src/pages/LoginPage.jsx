@@ -17,17 +17,31 @@ export default function LandingPage() {
   
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const savedEmail = localStorage.getItem("rememberedEmail");
-    if (savedEmail) {
-      setEmail(savedEmail);
-      setRememberMe(true);
-    }
-  }, []);
+
 
   const handleLoginClick = (selectedRole) => {
     setRole(selectedRole);
     setShowLogin(true);
+    setError("");
+
+    const rememberKey = selectedRole === "student" ? "rememberedStudentEmail" : "rememberedClubEmail";
+    const savedEmail = localStorage.getItem(rememberKey);
+
+    if (savedEmail) {
+      setEmail(savedEmail);
+      setRememberMe(true);
+      setPassword("1234567"); // Default pass for convenience as requested
+    } else {
+      setRememberMe(false);
+      // Set defaults as requested
+      if (selectedRole === "student") {
+        setEmail("semon@gmail.com");
+        setPassword("1234567");
+      } else {
+        setEmail("ccc@cuet.ac.bd");
+        setPassword("1234567");
+      }
+    }
   };
 
   const submit = async (e) => {
@@ -37,10 +51,12 @@ export default function LandingPage() {
       const url = role === "student" ? "/auth/student/login" : "/auth/club/login";
       const res = await axios.post(url, { email, password });
       
+      const rememberKey = role === "student" ? "rememberedStudentEmail" : "rememberedClubEmail";
+      
       if (rememberMe) {
-        localStorage.setItem("rememberedEmail", email);
+        localStorage.setItem(rememberKey, email);
       } else {
-        localStorage.removeItem("rememberedEmail");
+        localStorage.removeItem(rememberKey);
       }
 
       localStorage.setItem("token", res.data.token);
