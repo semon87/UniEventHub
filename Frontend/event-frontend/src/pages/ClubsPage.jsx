@@ -59,6 +59,11 @@ export default function ClubsPage() {
                 <h3 style={{ fontSize: "1.25rem", fontWeight: "bold", marginBottom: "0.5rem" }}>{club.name}</h3>
                 <p style={{ color: "#a1a1aa", marginBottom: "1.5rem" }}>{club.description}</p>
                 <Link to={`/clubs/${club._id}`} className="btn" style={{ background: "#27272a", color: "white", padding: "0.5rem 1rem", borderRadius: "6px", border: "none" }}>View Events</Link>
+                {/* DEBUG INFO */}
+                <div style={{ fontSize: "10px", color: "red", marginTop: "5px", wordBreak: "break-all" }}>
+                   Raw: {club.profilePhoto} <br/>
+                   Processed: {getPhotoUrl(club.profilePhoto)}
+                </div>
              </div>
            ))}
         </div>
