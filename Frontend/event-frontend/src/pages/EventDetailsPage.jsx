@@ -1,6 +1,8 @@
+```javascript
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import API, { BASE_URL } from "../api/axios";
+import API from "../api/axios"; // API is still used, so keep it
+import { getPhotoUrl } from "../utils/imageUrl"; // New import
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -65,11 +67,7 @@ export default function EventDetailsPage() {
     }
   };
 
-  const getPhotoUrl = (path) => {
-    if (!path) return "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000";
-    if (path.startsWith("http")) return path;
-    return `${BASE_URL}/${path}`;
-  };
+  // Removed the local getPhotoUrl function as it's now imported
 
   if (loading) return <div style={{ minHeight: "100vh", background: "#09090b", color: "white", display: "flex", justifyContent: "center", alignItems: "center" }}>Loading...</div>;
   if (!event) return <div style={{ minHeight: "100vh", background: "#09090b", color: "white", display: "flex", justifyContent: "center", alignItems: "center" }}>Event not found</div>;

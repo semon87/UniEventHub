@@ -1,14 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../api/axios";
+import { Calendar, MapPin, Users, Tag } from "lucide-react";
+import { getPhotoUrl } from "../utils/imageUrl";
 
 export default function EventCard({ event }) {
   const navigate = useNavigate();
-
-  const getPhotoUrl = (path) => {
-    if (!path) return "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000";
-    if (path.startsWith("http")) return path;
-    return `${BASE_URL}/${path}`;
-  };
 
   const date = new Date(event.startDateTime);
   const month = date.toLocaleString('default', { month: 'short' });

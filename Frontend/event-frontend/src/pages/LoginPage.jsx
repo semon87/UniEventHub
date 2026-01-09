@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { getPhotoUrl } from "../utils/imageUrl";
 import axios, { BASE_URL } from "../api/axios";
 import Footer from "../components/Footer";
 import { Eye, EyeOff } from "lucide-react";
@@ -76,12 +77,6 @@ export default function LandingPage() {
 
     return () => clearInterval(interval);
   }, [sliderEvents]);
-
-  const getPhotoUrl = (path) => {
-    if (!path) return null;
-    if (path.startsWith("http")) return path;
-    return `${BASE_URL}/${path.replace(/\\/g, "/")}`;
-  };
 
   const nextSlide = () => {
     setUrlIndex((prev) => (prev >= sliderEvents.length - 2 ? 0 : prev + 1));

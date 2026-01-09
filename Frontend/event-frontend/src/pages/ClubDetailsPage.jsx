@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"; // Add useNavigate import
 import API, { BASE_URL } from "../api/axios";
+import { getPhotoUrl } from "../utils/imageUrl";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import EventCard from "../components/EventCard";
@@ -37,12 +38,6 @@ export default function ClubDetailsPage() {
 
   if (loading) return <div style={{ minHeight: "100vh", background: "#09090b", color: "#fafafa", display: "flex", alignItems: "center", justifyContent: "center" }}>Loading...</div>;
   if (!club) return <div style={{ minHeight: "100vh", background: "#09090b", color: "#fafafa", display: "flex", alignItems: "center", justifyContent: "center" }}>Club not found</div>;
-
-  const getPhotoUrl = (path) => {
-    if (!path) return "https://via.placeholder.com/150";
-    if (path.startsWith("http")) return path;
-    return `${BASE_URL}/${path}`;
-  };
 
   return (
     <div style={{ minHeight: "100vh", background: "#09090b", color: "#fafafa", display: "flex", flexDirection: "column" }}>

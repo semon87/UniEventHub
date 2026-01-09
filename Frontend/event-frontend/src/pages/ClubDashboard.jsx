@@ -1,6 +1,8 @@
+```
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API, { BASE_URL } from "../api/axios";
+import { getPhotoUrl } from "../utils/imageUrl";
 import Footer from "../components/Footer";
 
 export default function ClubDashboard() {
@@ -45,12 +47,6 @@ export default function ClubDashboard() {
       fetchEvents();
     }
   }, [club]);
-
-  const getPhotoUrl = (path) => {
-    if (!path) return null;
-    if (path.startsWith("http")) return path;
-    return `${BASE_URL}/${path}`;
-  };
 
   // ... (existing handlers) ...
   const handleEdit = (event) => {
