@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getPhotoUrl } from "../utils/imageUrl";
 import axios, { BASE_URL } from "../api/axios";
 import Footer from "../components/Footer";
