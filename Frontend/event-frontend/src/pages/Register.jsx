@@ -46,7 +46,12 @@ export default function Register() {
         navigate("/club-login");
       }
     } catch (err) {
-      setError(err.response?.data?.message || "Registration failed");
+      if (err.response?.data?.errors) {
+        // Handle validation errors from express-validator
+        setError(err.response.data.errors.map(e => e.msg).join(", "));
+      } else {
+        setError(err.response?.data?.message || "Registration failed");
+      }
     }
   };
 
