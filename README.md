@@ -1,7 +1,8 @@
 # 🎓 UniEventHub
 
-**UniEventHub** is a centralized FullStack university event management platform designed to connect students and clubs seamlessly. It provides role-based access for students, clubs, and moderators, enabling secure event hosting, browsing, and ticket purchasing with real-time tracking and analytics.
-Visit: unievent-hub.vercel.app
+**UniEventHub** is a full-stack university event management platform built to seamlessly connect students and clubs. It features role-based access for students, club administrators, and moderators, enabling secure event creation, discovery, and ticket purchasing with real-time tracking and analytics.
+
+🔗 Live Site: https://unievent-hub.vercel.app
 ---
 
 ## 🚀 Key Features
@@ -69,4 +70,5 @@ Visit: unievent-hub.vercel.app
 
 ## 👨‍💻 Author
 Developed for academic and learning purposes.
+
 
