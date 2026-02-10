@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "https://unieventhub-production.up.railway.app";
+export const BASE_URL = "https://unieventhub.onrender.com";
 
 const API = axios.create({
   baseURL: `${BASE_URL}/api`,

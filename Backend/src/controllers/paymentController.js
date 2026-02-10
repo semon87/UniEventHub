@@ -7,7 +7,7 @@ const store_id = "emni684e61caa0afe";
 const store_passwd ="emni684e61caa0afe@ssl";
 const is_live = false; // Set to true for live
 
-const SERVER_URL = "https://unieventhub-production.up.railway.app";
+const SERVER_URL = "https://unieventhub.onrender.com";
 const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 
 // @desc    Initialize Payment
