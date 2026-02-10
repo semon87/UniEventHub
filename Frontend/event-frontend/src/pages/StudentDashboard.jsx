@@ -83,7 +83,7 @@ export default function StudentDashboard() {
         break;
       case "not_joined":
         // Exclude events that have already started (Live or Past)
-        filtered = filtered.filter(e => !e.goingStudents?.includes(userId) && new Date(e.startDateTime) > now);
+        filtered = filtered.filter(e => !e.goingStudents?.includes(userId) && new Date(e.endDateTime) > now);
         break;
       case "past":
         filtered = filtered.filter(e => new Date(e.endDateTime) < now);
@@ -94,7 +94,7 @@ export default function StudentDashboard() {
         break;
       default: // "all"
          // Exclude events that have already started
-        filtered = filtered.filter(e => new Date(e.startDateTime) > now);
+        filtered = filtered.filter(e => new Date(e.endDateTime) > now);
         break;
     }
 
