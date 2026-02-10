@@ -93,8 +93,8 @@ export default function StudentDashboard() {
         filtered = filtered.filter(e => new Date(e.startDateTime) > now);
         break;
       default: // "all"
-         // Exclude events that have already started
-        filtered = filtered.filter(e => new Date(e.endDateTime) > now);
+         // Show ALL events (both past and future)
+        // filtered = filtered; 
         break;
     }
 
